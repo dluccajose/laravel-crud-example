@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Publication;
 use Illuminate\Http\Request;
+use App\Http\Resources\Publication as PublicationResource;
+use App\Http\Resources\PublicationCollection;
 
 class PublicationController extends Controller
 {
@@ -143,5 +145,28 @@ class PublicationController extends Controller
 
 
         return redirect()->route('publications.index');
+    }
+
+
+    // METODOS PARA LA API
+
+    public function apiShowAll(Request $request) 
+    {
+        $publications = Publication::all();
+        return new PublicationCollection($publications);
+    }
+
+    public function apiShowone(Request $request, $id)
+    {   
+        $publication = Publication::find($id);
+
+        if(!$publication) {
+            return response()->json([
+                'error' => 'Publicacion no encontrada',
+                'ok' => false
+            ], 404);
+        }
+
+        return new PublicationResource($publication);
     }
 }

@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/publications', 'PublicationController@apiShowAll');
+
+Route::get('/publications/{id}', 'PublicationController@apiShowOne');
