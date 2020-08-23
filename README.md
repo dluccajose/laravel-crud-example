@@ -7,5 +7,6 @@ Ejemplo de CRUD con Laravel
 * Login y registro
 * CRUD para publicaciones 
 * Comentarios
+* API REST para obtener publicaciones
 * Notificaciones por correo al recibir comentarios en una publicacion
 
