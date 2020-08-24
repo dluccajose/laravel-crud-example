@@ -24,7 +24,7 @@ class Publication extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'content' => $this->id,
+            'content' => $this->content,
             'user' => $this->user
         ];
     }
