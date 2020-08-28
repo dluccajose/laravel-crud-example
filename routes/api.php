@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/login', 'UserController@authenticate');
+Route::get('/user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
 Route::get('/publications', 'PublicationController@apiShowAll');
-
 Route::get('/publications/{id}', 'PublicationController@apiShowOne');
